@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EatEase - Discover Restaurants</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-utensils me-2"></i>EatEase
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#restaurants">Restaurants</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-primary me-2" onclick="showAuthForm('login')">Login</button>
+                    <button class="btn btn-primary" onclick="showAuthForm('signup')">Sign Up</button>
+<!-- In your navbar, inside the <div class="d-flex"> -->
+    <button class="btn btn-success ms-2" onclick="showAddRestaurantForm()">
+        <i class="fas fa-plus me-1"></i> Add Restaurant
+    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center" id="home">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Welcome to EatEase!</h1>
+            <p class="lead mb-5">Discover the Easiest Way to Dine Out or Order In</p>
+            <a href="#restaurants" class="btn btn-primary btn-lg px-4 me-2">Explore Restaurants</a>
+            <a href="#features" class="btn btn-outline-light btn-lg px-4">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container mb-5" id="restaurants">
+        <h2 class="text-center mb-5">Top Restaurants</h2>
+        
+        <!-- Restaurant Filter -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search restaurants..." id="searchInput">
+                    <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <select class="form-select" id="trafficFilter">
+                    <option value="all">All Traffic Levels</option>
+                    <option value="low">Low Traffic</option>
+                    <option value="moderate">Moderate Traffic</option>
+                    <option value="high">High Traffic</option>
+                    <option value="extreme">Extreme Traffic</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Restaurant Cards -->
+        <div class="row" id="restaurantsContainer">
+            <!-- Cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-light" id="features">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose EatEase?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="text-center p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Real-Time Traffic</h3>
+                        <p>Check how busy restaurants are before you go. No more waiting in line or struggling to find a table.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Easy Table Booking</h3>
+                        <p>Reserve a table with just a few taps. Our user-friendly interface makes booking a breeze.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-4 h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Direct Food Ordering</h3>
+                        <p>Order your favorite dishes directly from the restaurant. Enjoy fresh, hot meals delivered or ready for pickup.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">About EatEase</h2>
+                    <p class="lead">Revolutionizing the way you dine out or order in.</p>
+                    <p>Founded in 2023, EatEase was born out of a simple idea: dining should be effortless. Our platform combines real-time restaurant data with seamless booking and ordering to create the perfect dining experience every time.</p>
+                    <p>Whether you're looking for a quiet cafe with low traffic or want to order from your favorite busy restaurant with guaranteed availability, EatEase makes it happen with just a few clicks.</p>
+                    <div class="mt-4">
+                        <h5>Our Mission</h5>
+                        <p>To eliminate the stress and uncertainty from dining out while supporting local restaurants and their communities.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                         class="img-fluid rounded shadow" alt="About EatEase">
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Add Restaurant Modal -->
+<div class="modal fade" id="addRestaurantModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Your Restaurant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addRestaurantForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="restaurantName" class="form-label">Restaurant Name</label>
+                                <input type="text" class="form-control" id="restaurantName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="restaurantDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="restaurantDescription" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="restaurantTraffic" class="form-label">Average Traffic</label>
+                                <select class="form-select" id="restaurantTraffic" required>
+                                    <option value="low">Low</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="high">High</option>
+                                    <option value="extreme">Extreme</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="restaurantRating" class="form-label">Rating (1-5)</label>
+                                <input type="number" class="form-control" id="restaurantRating" min="1" max="5" step="0.1" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="restaurantImage" class="form-label">Image URL</label>
+                                <input type="url" class="form-control" id="restaurantImage" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="restaurantLocation" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="restaurantLocation" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Opening Hours</label>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Monday" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Tuesday" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Wednesday" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Thursday" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Friday" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Saturday" required>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Sunday" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="addMenuItem()">
+                            <i class="fas fa-plus me-1"></i> Add Menu Item
+                        </button>
+                        <div id="menuItemsContainer" class="mt-3">
+                            <!-- Menu items will be added here -->
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Restaurant Modal -->
+    <div class="modal fade" id="restaurantModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalRestaurantName">Restaurant Name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="restaurantTabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#info">Info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#book">Book Table</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#order">Order Food</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content pt-3">
+                        <div class="tab-pane fade show active" id="info">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img id="modalRestaurantImage" src="" class="img-fluid rounded mb-3" alt="Restaurant">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div id="modalTrafficBadge" class="badge me-3">Traffic</div>
+                                        <div id="modalRestaurantRating" class="star-rating"></div>
+                                    </div>
+                                    <p id="modalRestaurantDescription">Description will appear here</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Opening Hours</h5>
+                                    <ul class="list-group list-group-flush" id="openingHours">
+                                        <!-- Hours will be inserted here -->
+                                    </ul>
+                                    <h5 class="mt-4">Location</h5>
+                                    <p id="modalRestaurantLocation">Location info</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="menu">
+                            <h5>Menu</h5>
+                            <div id="menuItems">
+                                <!-- Menu items will be inserted here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="book">
+                            <div class="booking-form">
+                                <h5>Book a Table</h5>
+                                <form id="bookingForm">
+                                    <div class="mb-3">
+                                        <label for="bookingName" class="form-label">Your Name</label>
+                                        <input type="text" class="form-control" id="bookingName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bookingEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="bookingEmail" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bookingPhone" class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="bookingPhone" required>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="bookingDate" class="form-label">Date</label>
+                                            <input type="date" class="form-control" id="bookingDate" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="bookingTime" class="form-label">Time</label>
+                                            <input type="time" class="form-control" id="bookingTime" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bookingGuests" class="form-label">Number of Guests</label>
+                                        <select class="form-select" id="bookingGuests" required>
+                                            <option value="1">1 person</option>
+                                            <option value="2">2 people</option>
+                                            <option value="3">3 people</option>
+                                            <option value="4">4 people</option>
+                                            <option value="5">5+ people</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bookingNotes" class="form-label">Special Requests</label>
+                                        <textarea class="form-control" id="bookingNotes" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Book Now</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="order">
+                            <div class="order-form">
+                                <h5>Order Food</h5>
+                                <form id="orderForm">
+                                    <div class="mb-3">
+                                        <label for="orderName" class="form-label">Your Name</label>
+                                        <input type="text" class="form-control" id="orderName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="orderEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="orderEmail" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="orderPhone" class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="orderPhone" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Delivery Method</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="deliveryMethod" id="delivery" value="delivery" checked>
+                                            <label class="form-check-label" for="delivery">
+                                                Delivery
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="deliveryMethod" id="pickup" value="pickup">
+                                            <label class="form-check-label" for="pickup">
+                                                Pickup
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3" id="deliveryAddressGroup">
+                                        <label for="orderAddress" class="form-label">Delivery Address</label>
+                                        <textarea class="form-control" id="orderAddress" rows="2" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="orderTime" class="form-label">Delivery/Pickup Time</label>
+                                        <input type="datetime-local" class="form-control" id="orderTime" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Items</label>
+                                        <div id="orderItems">
+                                            <!-- Menu items for ordering will be inserted here -->
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5>Total: <span id="orderTotal">$0.00</span></h5>
+                                        <button type="submit" class="btn btn-primary">Place Order</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="auth-container">
+                        <div id="loginForm">
+                            <h3 class="text-center mb-4">Login to EatEase</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="loginEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+                                <p class="text-center">Don't have an account? <span class="auth-toggle" onclick="showAuthForm('signup')">Sign up</span></p>
+                            </form>
+                        </div>
+                        
+                        <div id="signupForm" style="display: none;">
+                            <h3 class="text-center mb-4">Create an Account</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="signupName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="signupName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="signupEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="signupPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="signupConfirmPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 mb-3">Sign Up</button>
+                                <p class="text-center">Already have an account? <span class="auth-toggle" onclick="showAuthForm('login')">Login</span></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>EatEase</h5>
+                    <p>Discover the easiest way to dine out or order in. Real-time traffic, easy booking, and direct ordering.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white">Home</a></li>
+                        <li><a href="#restaurants" class="text-white">Restaurants</a></li>
+                        <li><a href="#features" class="text-white">Features</a></li>
+                        <li><a href="#about" class="text-white">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Babarmahal, Kathmadnu</li>
+                        <li><i class="fas fa-phone me-2"></i>+977 9709140038</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@eatease.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 EatEase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     <!--jS -->
+    <script src="main.js"></script>
+</body>
+</html>
